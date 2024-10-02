@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/estilos.css">
+    <script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.7/dist/inputmask.min.js"></script>
+    <title>Captura de Cuenta Contable</title>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-8">
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-6">Captura de Cuenta Contable (4 Niveles)</h2>
+            <form>
+                <!-- Captura de la cuenta contable con máscara -->
+                <div class="mb-4">
+                    <label for="cuenta_contable" class="block text-sm font-medium text-gray-700">Cuenta Contable</label>
+                    <input type="text" id="cuenta_contable" name="cuenta_contable" placeholder="____-____-____-____" 
+                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" required>
+                </div>
+
+                <!-- Descripción -->
+                <div class="mb-4">
+                    <label for="descripcion" class="block text-sm font-medium text-gray-700">Descripción</label>
+                    <textarea id="descripcion" name="descripcion" rows="3" placeholder="Descripción de la cuenta"
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"></textarea>
+                </div>
+
+                <!-- Botones -->
+                <div class="mt-6 flex justify-end">
+                    <button type="reset" class="mr-4 bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">Resetear</button>
+                    <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Aplicar la máscara de cuenta contable: 4 niveles de 4 dígitos separados por guiones
+        Inputmask("9999-9999-9999-9999", {placeholder: '____'}).mask(document.getElementById("cuenta_contable"));
+
+        // Función para rellenar con ceros a la izquierda
+        function padZeros(accountNumber) {
+            return accountNumber.split('-').map(function(part) {
+                if (part === '' || part.trim() === '') {
+                    return '0000';  // Si no hay valor, llenar con ceros
+                }
+                return part.padStart(4, '0');  // Rellena con ceros si no tiene 4 dígitos
+            }).join('-');
+        }
+
+        // Al perder el foco (blur), rellenar con ceros a la izquierda
+        document.getElementById('cuenta_contable').addEventListener('blur', function() {
+            let cuenta = document.getElementById('cuenta_contable').value;
+            document.getElementById('cuenta_contable').value = padZeros(cuenta);
+        });
+    </script>
+</body>
+</html>

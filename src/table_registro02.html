@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/estilos.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="grid grid-cols-12 container mx-auto px-4 sm:px-6 lg:px-8 py-8 gap-4">
+          
+        <table id="example" class="table-auto w-full col-span-8">
+          <thead>
+            <tr>
+              <th class="py-2 px-4  bg-gray-300 text-left">Nombre</th>
+              <th class="py-2 px-4  bg-gray-300 text-left">Correo Electrónico</th>
+              <th class="py-2 px-4  bg-gray-300 text-left">Teléfono</th>
+              <th class="py-2 px-4  bg-gray-300 text-left">Estado</th>
+    
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="py-2 px-4 border-b border-gray-300">Juan Pérez</td>
+              <td class="py-2 px-4 border-b border-gray-300">juan@example.com</td>
+              <td class="py-2 px-4 border-b border-gray-300">123-456-7890</td>
+              <td class="py-2 px-4 border-b border-gray-300">CDMX</td>
+            </tr>
+            <tr>
+              <td class="py-2 px-4 border-b border-gray-300">Ricardo Santana</td>
+              <td class="py-2 px-4 border-b border-gray-300">ricardo@example.com</td>
+              <td class="py-2 px-4 border-b border-gray-300">133-456-7790</td>
+              <td class="py-2 px-4 border-b border-gray-300">Sonora</td>
+            </tr>
+            <tr>
+              <td class="py-2 px-4 border-b border-gray-300">Pedro Ruiz</td>
+              <td class="py-2 px-4 border-b border-gray-300">pedro@example.com</td>
+              <td class="py-2 px-4 border-b border-gray-300">188-44456-7890</td>
+              <td class="py-2 px-4 border-b border-gray-300">Monterrey</td>
+            </tr>
+            <tr>
+              <td class="py-2 px-4 border-b border-gray-300">Saul Lopez</td>
+              <td class="py-2 px-4 border-b border-gray-300">Saul@example.com</td>
+              <td class="py-2 px-4 border-b border-gray-300">17723-47756-7890</td>
+              <td class="py-2 px-4 border-b border-gray-300">Durango</td>
+            </tr>
+          </tbody>
+        </table>
+      
+        <form id="registro-form" class="space-y-4 col-span-4">
+            <div>
+              <label for="nombre" class="block text-gray-700">Nombre:</label>
+              <input type="text" id="nombre" name="nombre" required
+                     class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <div>
+              <label for="email" class="block text-gray-700">Correo Electrónico:</label>
+              <input type="email" id="email" name="email" required
+                     class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <div>
+              <label for="telefono" class="block text-gray-700">Teléfono:</label>
+              <input type="tel" id="telefono" name="telefono"
+                     class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <div class="text-center">
+              <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mr-8">Reset</button>
+              <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Registrar</button>
+              
+    
+            </div>
+          </form>
+          
+      </div>
+</body>
+</html>

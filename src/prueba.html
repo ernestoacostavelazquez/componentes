@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/estilos.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="grid grid-cols-12 gap-4">
+        <div class="col-span-8 bg-gray-200">
+          <!-- Contenido de la columna más grande -->
+           
+    <!-- Sección de Tabla de Datos -->
+    <section class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold mb-4">Tabla de Datos</h2>
+        <table class="min-w-full bg-white">
+          <thead>
+            <tr>
+              <th class="py-2 px-4 border-b-2 border-gray-300 text-left">Nombre</th>
+              <th class="py-2 px-4 border-b-2 border-gray-300 text-left">Correo Electrónico</th>
+              <th class="py-2 px-4 border-b-2 border-gray-300 text-left">Teléfono</th>
+              <th class="py-2 px-4 border-b-2 border-gray-300 text-left">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="py-2 px-4 border-b border-gray-300">Juan Pérez</td>
+              <td class="py-2 px-4 border-b border-gray-300">juan@example.com</td>
+              <td class="py-2 px-4 border-b border-gray-300">123-456-7890</td>
+              <td class="py-2 px-4 border-b border-gray-300">
+                <button class="text-indigo-600 hover:text-indigo-900">Editar</button>
+                <button class="text-red-600 hover:text-red-900 ml-4">Eliminar</button>
+              </td>
+            </tr>
+            <!-- Más registros aquí -->
+          </tbody>
+        </table>
+      </section>
+        </div>
+        <div class="col-span-4 bg-gray-300">
+          <!-- Contenido de la columna más pequeña -->
+           
+    <!-- Sección de Captura de Registro -->
+    <section class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold mb-4">Captura de Registro</h2>
+        <form id="registro-form" class="space-y-4">
+          <div>
+            <label for="nombre" class="block text-gray-700">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required
+                   class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
+          </div>
+          <div>
+            <label for="email" class="block text-gray-700">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" required
+                   class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
+          </div>
+          <div>
+            <label for="telefono" class="block text-gray-700">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono"
+                   class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
+          </div>
+          <div>
+            <button type="submit" class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700">Registrar</button>
+          </div>
+        </form>
+      </section>
+  
+        </div>
+      </div>
+   
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captura de Cuentas de Detalle</title>
+    <link rel="stylesheet" href="./css/estilos.css">
+    <script>
+        // Simulación de cuentas con nombre (puedes reemplazarlo por una búsqueda real de la base de datos)
+        const cuentas = {
+            '1-1-1-1-1': 'Caja General',
+            '2-2-2-2-2': 'Bancos Nacionales',
+            '3-3-3-3-3': 'Proveedores Locales',
+            '4-4-4-4-4': 'Cuentas por Cobrar',
+        };
+
+        // Función que muestra el nombre de la cuenta si coincide con el código
+        function mostrarNombreCuenta() {
+            const codigo = document.getElementById('codigo-cuenta').value;
+            const nombreCuenta = cuentas[codigo] || 'Cuenta no encontrada';
+            document.getElementById('nombre-cuenta').textContent = nombreCuenta;
+        }
+
+        // Función para formatear el código de cuenta "1-1-1-1-1"
+        function actualizarCodigo() {
+            const inputs = Array.from(document.querySelectorAll('.input-cuenta'));
+            const codigo = inputs.map(input => input.value).join('-');
+            document.getElementById('codigo-cuenta').value = codigo;
+            mostrarNombreCuenta();
+        }
+
+        // Función para abrir el modal del catálogo de cuentas
+        function abrirCatalogo() {
+            document.getElementById('modal').classList.remove('hidden');
+        }
+
+        // Función para cerrar el modal del catálogo de cuentas
+        function cerrarCatalogo() {
+            document.getElementById('modal').classList.add('hidden');
+        }
+
+        // Función que selecciona una cuenta del catálogo y la asigna a los inputs
+        function seleccionarCuenta(codigo, nombre) {
+            const partes = codigo.split('-');
+            document.querySelectorAll('.input-cuenta').forEach((input, index) => {
+                input.value = partes[index] || '';
+            });
+            document.getElementById('codigo-cuenta').value = codigo;
+            document.getElementById('nombre-cuenta').textContent = nombre;
+            cerrarCatalogo();
+        }
+    </script>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-6 space-y-6">
+        <!-- Título -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold mb-4">Captura de Cuentas de Detalle</h2>
+        </div>
+
+        <!-- Sección de captura de cuentas de detalle -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-medium mb-4">Cuentas de Detalle</h3>
+
+            <!-- Captura del código de la cuenta -->
+            <div class="flex space-x-4 items-center">
+                <!-- Inputs para la captura de cuenta en formato "1-1-1-1-1" -->
+                <div class="flex space-x-2">
+                    <input type="text" maxlength="1" class="input-cuenta border border-gray-300 p-2 rounded-lg w-10 text-center" placeholder="1" oninput="actualizarCodigo()">
+                    <span>-</span>
+                    <input type="text" maxlength="1" class="input-cuenta border border-gray-300 p-2 rounded-lg w-10 text-center" placeholder="1" oninput="actualizarCodigo()">
+                    <span>-</span>
+                    <input type="text" maxlength="1" class="input-cuenta border border-gray-300 p-2 rounded-lg w-10 text-center" placeholder="1" oninput="actualizarCodigo()">
+                    <span>-</span>
+                    <input type="text" maxlength="1" class="input-cuenta border border-gray-300 p-2 rounded-lg w-10 text-center" placeholder="1" oninput="actualizarCodigo()">
+                    <span>-</span>
+                    <input type="text" maxlength="1" class="input-cuenta border border-gray-300 p-2 rounded-lg w-10 text-center" placeholder="1" oninput="actualizarCodigo()">
+                </div>
+                
+                <!-- Botón para abrir el catálogo de cuentas -->
+                <button onclick="abrirCatalogo()" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 ml-4">
+                    Catálogo de Cuentas
+                </button>
+
+                <!-- Input oculto para mantener el código final -->
+                <input type="hidden" id="codigo-cuenta" value="">
+            </div>
+
+            <!-- Nombre de la cuenta -->
+            <div class="mt-4">
+                <h4 class="font-medium">Nombre de la Cuenta: <span id="nombre-cuenta" class="text-blue-600 font-bold">...</span></h4>
+            </div>
+        </div>
+
+        <!-- Sección de captura de concepto -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-medium mb-4">Captura de Concepto</h3>
+            <div class="flex space-x-4 items-center">
+                <label for="concepto" class="text-gray-700 font-medium">Concepto</label>
+                <input type="text" id="concepto" name="concepto" class="border border-gray-300 p-2 rounded-lg w-full" placeholder="Escriba el concepto del registro">
+            </div>
+        </div>
+
+        <!-- Botón de envío -->
+        <div class="bg-white p-6 rounded-lg shadow-md flex justify-end">
+            <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Registrar Cuenta</button>
+        </div>
+    </div>
+
+    <!-- Modal para el catálogo de cuentas -->
+    <div id="modal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
+        <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+            <h3 class="text-xl font-medium mb-4">Catálogo de Cuentas</h3>
+
+            <!-- Lista de cuentas (aquí puedes hacer una búsqueda real) -->
+            <ul class="space-y-2">
+                <li>
+                    <button onclick="seleccionarCuenta('1-1-1-1-1', 'Caja General')" class="w-full text-left px-4 py-2 hover:bg-gray-100">
+                        1-1-1-1-1 - Caja General
+                    </button>
+                </li>
+                <li>
+                    <button onclick="seleccionarCuenta('2-2-2-2-2', 'Bancos Nacionales')" class="w-full text-left px-4 py-2 hover:bg-gray-100">
+                        2-2-2-2-2 - Bancos Nacionales
+                    </button>
+                </li>
+                <li>
+                    <button onclick="seleccionarCuenta('3-3-3-3-3', 'Proveedores Locales')" class="w-full text-left px-4 py-2 hover:bg-gray-100">
+                        3-3-3-3-3 - Proveedores Locales
+                    </button>
+                </li>
+                <li>
+                    <button onclick="seleccionarCuenta('4-4-4-4-4', 'Cuentas por Cobrar')" class="w-full text-left px-4 py-2 hover:bg-gray-100">
+                        4-4-4-4-4 - Cuentas por Cobrar
+                    </button>
+                </li>
+            </ul>
+
+            <!-- Botón para cerrar el modal -->
+            <div class="mt-4 flex justify-end">
+                <button onclick="cerrarCatalogo()" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

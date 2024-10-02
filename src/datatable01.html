@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejemplo de DataTables</title>
+    <!-- Incluir jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Incluir DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+
+<table id="example" class="display">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>País</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Juan</td>
+            <td>28</td>
+            <td>España</td>
+        </tr>
+        <tr>
+            <td>Ana</td>
+            <td>30</td>
+            <td>México</td>
+        </tr>
+        <tr>
+            <td>Carlos</td>
+            <td>25</td>
+            <td>Argentina</td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable({
+            "paging": true,  // Activa la paginación
+            "ordering": true, // Permite ordenar columnas
+            "info": true,     // Muestra información de la tabla
+            "searching": true // Activa la barra de búsqueda
+        });
+    });
+</script>
+
+</body>
+</html>

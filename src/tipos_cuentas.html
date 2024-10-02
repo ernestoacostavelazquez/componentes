@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captura de Cuentas Contables</title>
+    <link rel="stylesheet" href="./css/estilos.css">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-6 space-y-6">
+        <!-- Sección 1: Selección de cuenta mayor -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold mb-4">Seleccionar Cuenta de Mayor</h2>
+            <div class="space-y-4">
+                <label for="cuenta-mayor" class="text-gray-700 font-medium">Cuenta de Mayor</label>
+                <select id="cuenta-mayor" name="cuenta-mayor" class="border border-gray-300 p-2 rounded-lg w-full">
+                    <!-- Las opciones de cuentas de mayor -->
+                    <option value="">Seleccione una cuenta de mayor</option>
+                    <option value="1">1000 - Activos</option>
+                    <option value="2">2000 - Pasivos</option>
+                    <option value="3">3000 - Capital</option>
+                    <option value="4">4000 - Ingresos</option>
+                    <option value="5">5000 - Gastos</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Sección 2: Subcuentas -->
+        <div class="bg-white p-6 rounded-lg shadow-md hidden" id="subcuentas-section">
+            <h2 class="text-2xl font-semibold mb-4">Subcuentas</h2>
+            <div id="subcuentas-list" class="space-y-4">
+                <!-- Aquí se cargarán dinámicamente las subcuentas -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const cuentasMayor = {
+            1: [
+                { codigo: '1100', nombre: 'Activos Circulantes' },
+                { codigo: '1110', nombre: 'Efectivo y Equivalentes' },
+                { codigo: '1120', nombre: 'Cuentas por Cobrar' },
+                { codigo: '1200', nombre: 'Activos No Circulantes' }
+            ],
+            2: [
+                { codigo: '2100', nombre: 'Pasivos Circulantes' },
+                { codigo: '2200', nombre: 'Pasivos No Circulantes' }
+            ],
+            3: [
+                { codigo: '3100', nombre: 'Capital Social' }
+            ],
+            4: [
+                { codigo: '4100', nombre: 'Ingresos por Ventas' }
+            ],
+            5: [
+                { codigo: '5100', nombre: 'Gastos de Operación' },
+                { codigo: '5200', nombre: 'Gastos Financieros' }
+            ]
+        };
+
+        const cuentaMayorSelect = document.getElementById('cuenta-mayor');
+        const subcuentasSection = document.getElementById('subcuentas-section');
+        const subcuentasList = document.getElementById('subcuentas-list');
+
+        cuentaMayorSelect.addEventListener('change', function() {
+            const selectedValue = this.value;
+            subcuentasList.innerHTML = ''; // Limpiar la lista de subcuentas
+            if (selectedValue && cuentasMayor[selectedValue]) {
+                // Mostrar la sección de subcuentas
+                subcuentasSection.classList.remove('hidden');
+                // Cargar las subcuentas correspondientes
+                cuentasMayor[selectedValue].forEach(subcuenta => {
+                    const subcuentaElement = document.createElement('div');
+                    subcuentaElement.className = 'flex justify-between items-center border-b border-gray-300 py-2';
+                    subcuentaElement.innerHTML = `
+                        <span class="text-gray-700">${subcuenta.codigo} - ${subcuenta.nombre}</span>
+                    `;
+                    subcuentasList.appendChild(subcuentaElement);
+                });
+            } else {
+                subcuentasSection.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
