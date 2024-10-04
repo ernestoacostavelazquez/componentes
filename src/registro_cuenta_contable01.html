@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/estilos.css">
+    <title>Document</title>
+</head>
+
+<script>
+    function aplicarMascara(input) {
+        // Elimina todos los caracteres no numéricos
+        let valor = input.value.replace(/\D/g, '');
+        // Aplica la máscara
+        if (valor.length > 4) {
+            valor = valor.substring(0, 4) + '-' + valor.substring(4);
+        }
+        if (valor.length > 9) {
+            valor = valor.substring(0, 9) + '-' + valor.substring(9);
+        }
+        if (valor.length > 14) {
+            valor = valor.substring(0, 14) + '-' + valor.substring(14);
+        }
+        if (valor.length > 19) {
+            valor = valor.substring(0, 19) + '-' + valor.substring(19);
+        }
+        if (valor.length > 24) {
+            valor = valor.substring(0, 24) + '-' + valor.substring(24);
+        }
+        input.value = valor;
+    }
+</script>
+<body class="bg-gray-100 flex items-center justify-center h-screen"></body>
+    <div class="bg-white shadow-md rounded-lg p-8 w-96">
+        <h2 class="text-xl font-bold mb-4 text-center">Captura cuenta contable</h2>
+        <form>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Cuenta Contable</label>
+                <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" placeholder="Ingrese cuenta contable" oninput="aplicarMascara(this)">
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Descripción</label>
+                <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" placeholder="Ingrese descripción">
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Grupo</label>
+                <select class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                    <option>Activo Circulante</option>
+                    <!-- Puedes añadir más opciones aquí -->
+                </select>
+            </div>
+            <div class="mb-4">
+                <span class="block text-sm font-medium text-gray-700">Tipo Cuenta</span>
+                <div class="flex items-center">
+                    <label class="mr-4"><input type="radio" name="tipo_cuenta" value="titulo"> Título</label>
+                    <label class="mr-4"><input type="radio" name="tipo_cuenta" value="mayor"> Mayor</label>
+                    <label><input type="radio" name="tipo_cuenta" value="auxiliar"> Auxiliar</label>
+                </div>
+            </div>
+            <div class="mb-4">
+                <span class="block text-sm font-medium text-gray-700">Naturaleza</span>
+                <div class="flex items-center">
+                    <label class="mr-4"><input type="radio" name="naturaleza" value="deudora"> Deudora</label>
+                    <label class="mr-4"><input type="radio" name="naturaleza" value="acreedora"> Acreedora</label>
+                    <label><input type="radio" name="naturaleza" value="no_aplica"> No Aplica</label>
+                </div>
+            </div>
+            <div class="mb-4">
+                <span class="block text-sm font-medium text-gray-700">Status</span>
+                <div class="flex items-center">
+                    <label class="mr-4"><input type="radio" name="status" value="activa"> Activa</label>
+                    <label><input type="radio" name="status" value="inactiva"> Inactiva</label>
+                </div>
+            </div>
+            <div class="flex justify-center">
+                <button type="submit" class="w-full bg-blue-600 text-white font-bold py-2 rounded-md hover:bg-blue-700">Registrar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
