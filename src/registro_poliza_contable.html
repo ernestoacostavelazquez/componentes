@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/estilos.css">
+    <title>Document</title>
+</head>
+<script>
+    function agregarFila() {
+        const tabla = document.getElementById("tablaPolizas");
+        const nuevaFila = tabla.insertRow(-1);
+        const celdas = [
+            '<input type="text" class="border border-gray-300 rounded-md p-1 w-full" placeholder="Cuenta Contable">',
+            '<input type="text" class="border border-gray-300 rounded-md p-1 w-full" placeholder="Concepto">',
+            '<input type="number" class="border border-gray-300 rounded-md p-1 w-full" placeholder="Cargo">',
+            '<input type="number" class="border border-gray-300 rounded-md p-1 w-full" placeholder="Abono">',
+            '<button class="bg-yellow-500 text-white font-bold py-1 px-3 rounded-md">Editar</button>',
+            '<button class="bg-red-500 text-white font-bold py-1 px-3 rounded-md">Eliminar</button>',
+        ];
+
+        celdas.forEach(celdaHTML => {
+            const celda = nuevaFila.insertCell();
+            celda.innerHTML = celdaHTML;
+        });
+    }
+</script>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white shadow-md rounded-lg p-8 w-96">
+        <h2 class="text-xl font-bold mb-4 text-center">Captura de Pólizas Contables</h2>
+        <form>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Ejercicio</label>
+                    <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" value="2024" readonly>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Periodo</label>
+                    <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" value="Enero" readonly>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Fecha</label>
+                    <input type="date" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Tipo</label>
+                    <select class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                        <option>Poliza Diario</option>
+                        <!-- Otras opciones pueden añadirse aquí -->
+                    </select>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Concepto</label>
+                <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" placeholder="Ingrese concepto">
+            </div>
+            <div class="mb-4">
+                <div class="grid grid-cols-4 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Cuenta Contable</label>
+                        <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" placeholder="Cuenta Contable">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Concepto</label>
+                        <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" placeholder="Concepto">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Cargo</label>
+                        <input type="number" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" placeholder="Cargo">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Abono</label>
+                        <input type="number" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" placeholder="Abono">
+                    </div>
+                </div>
+            </div>
+            <div class="mb-4">
+                <table class="min-w-full border-collapse border border-gray-200" id="tablaPolizas">
+                    <thead>
+                        <tr>
+                            <th class="border border-gray-300 p-2">Cuenta</th>
+                            <th class="border border-gray-300 p-2">Concepto</th>
+                            <th class="border border-gray-300 p-2">Cargo</th>
+                            <th class="border border-gray-300 p-2">Abono</th>
+                            <th class="border border-gray-300 p-2">Editar</th>
+                            <th class="border border-gray-300 p-2">Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Las filas se agregarán dinámicamente aquí -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="mb-4 flex justify-between">
+                <span class="font-bold">Totales:</span>
+                <span class="font-bold">0</span>
+            </div>
+            <div class="flex justify-center">
+                <button type="button" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700" onclick="agregarFila()">Grabar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
